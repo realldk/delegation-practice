@@ -34,6 +34,7 @@ function handler(e) {
   // target에서 가장 가까운 li를 찾는다.
   let target = e.target.closest('li');
   if(!target) return; 
+  let index = getAttr(target, 'data-index');
   // 선택한 li에게 is-active 클래스 넣어주기
   // 선택하지 않은 li의 is-active 클래스 제거하기
   let list = navigation.children; // 유사배열이라 forEach없음
@@ -41,24 +42,22 @@ function handler(e) {
   list.forEach(item => item.classList.remove('is-active'));
   target.classList.add('is-active');
   console.log(target);
+  
+  // 내가 선택한 li의 index를 찾기
+  // getAttr이용해서 target의 index 알아내기
+  // console.log(getAttr(target, 'data-index'));
+  // dataset 이용해서 target의 index 알아내기
+  // console.log(target.dataset.index);
+  
+  // 비주얼 안에있는 이미지를 가져온다.
+  let visualImage = getNode('.visual img');
+  // 이미지의 src 속성에 접근해서 src의 값을 index로 바꾼다.
+  // attr(visualImage, 'src', `./assets/part01/visual${index}.jpg`); // 주소를 알고 있고, 순차적으로 정렬되어서 숫자 하나만 바꾸면 될 때
+  attr(visualImage, 'src', `./assets/part01/${data[index-1].src}`); // data로 주어진 주소를 참조하는 방법
+  // 이미지의 alt 바꾸기
+  attr(visualImage, 'alt', data[index - 1].alt);
 }
-
 navigation.addEventListener('click', handler);
-
-
-// // 내가 한거
-// let selectedLi;
-// navigation.onclick = function(event) {
-//   let target = event.target;
-
-//   if (target.tagName != 'LI') return;
-
-//   carousel(target);
-// }
-
-// function carousel(li) {
-//   if ()
-// }
 console.log(navigation);
 
 

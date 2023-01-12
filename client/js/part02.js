@@ -23,7 +23,42 @@ const data = [
   }
 ]
 
+// 이것과 같다
+// const list = document.querySelectorAll('.navigation > li')
+// list.forEach((item)=>{
+//   item.addEventListener('click', ()=>{
 
+//   })
+// })
 
+$('.navigation > li').click(function(e){
+  //태그의 기능을 상실하게 하는 것
+  e.preventDefault(); 
 
+  let index = $(this).index();
+
+  $('.navigation > li').removeClass('is-active');
+
+  $(this).addClass('is-active');
+
+  $('.visual img').attr({
+    'src': `./assets/part01/${data[index].src}`,
+    'alt': data[index].alt})
+});
+
+// 뭐가 다른거지?
+$('.navigation > li').on('click', 'li', function(e){
+  //태그의 기능을 상실하게 하는 것
+  e.preventDefault(); 
+
+  let index = $(this).attr('data-index');
+  
+  $('.navigation > li').removeClass('is-active');
+
+  $(this).addClass('is-active');
+
+  $('.visual img').attr({
+    'src': `./assets/part01/${data[index-1].src}`,
+    'alt': data[index].alt})
+})
 

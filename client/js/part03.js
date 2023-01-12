@@ -23,7 +23,26 @@ const data = [
 ]
 
 
-
+const swiper = new Swiper('.swiper', {
+  autoplay: true, 
+  loop: true,
+  speed: 2000,
+  parallax: true,
+  pagination:{
+    el:'.pagination',
+    clickable: true,
+    // 누르는 단추(bullet)들을 커스텀하기
+    bulletClass: 'bullet',
+    bulletActiveClass: 'is-active',
+    renderBullet: function (index,className){
+      return /* html */ `
+        <span class="${className}">
+          <img src="./assets/part01/${data[index].src}" alt="${data[index].alt}" />
+        </span>
+      `
+    }
+  }
+})
 
 
 

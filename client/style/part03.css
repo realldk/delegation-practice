@@ -61,9 +61,30 @@
   justify-content: space-between;
 }
 
+.bullet{
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+  /* background: red; */
+  margin: 0.3rem;
+  border: 4px solid transparent;
+  transition: all .3s;
+}
 
+.bullet.is-active{
+  background: white;
+}
 
+.bullet img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
+.swiper-pagination {
+  display: flex;
+  justify-content: space-between;
+}
 @media screen and (max-width:900px) {
   
 .swiper{
